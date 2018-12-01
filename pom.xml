@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.jxjr.ynzw</groupId>
+    <artifactId>cxf</artifactId>
+    <version>0.1</version>
+<dependencies>
+
+    <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-transports-http -->
+    <dependency>
+        <groupId>org.apache.cxf</groupId>
+        <artifactId>cxf-rt-transports-http</artifactId>
+        <version>3.2.0</version>
+    </dependency>
+
+
+</dependencies>
+<build>
+    <plugins>
+        <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <source>1.5</source>
+                <target>1.5</target>
+            </configuration>
+        </plugin>
+        <!--<plugin>-->
+            <!--<groupId>org.apache.cxf</groupId>-->
+            <!--<artifactId>cxf-codegen-plugin</artifactId>-->
+            <!--<version>3.2.6</version>-->
+            <!--<executions>-->
+                <!--<execution>-->
+                    <!--<id>generate-sources</id>-->
+                    <!--<phase>generate-sources</phase>-->
+                    <!--<configuration>-->
+                        <!--<wsdlOptions>-->
+                            <!--<wsdlOption>-->
+                                <!--<wsdl>src/main/resources/OrderProcess.wsdl</wsdl>-->
+                            <!--</wsdlOption>-->
+                        <!--</wsdlOptions>-->
+                    <!--</configuration>-->
+                    <!--<goals>-->
+                        <!--<goal>wsdl2java</goal>-->
+                    <!--</goals>-->
+                <!--</execution>-->
+            <!--</executions>-->
+        <!--</plugin>-->
+        <plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <configuration>
+                <appendAssemblyId>false</appendAssemblyId>
+                <descriptorRefs>
+                    <descriptorRef>jar-with-dependencies</descriptorRef>
+                </descriptorRefs>
+                <archive>
+                    <manifest>
+                        <!-- 此处指定main方法入口的class -->
+                        <mainClass>com.jxjr.ynzw.fclient.FclientMain</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>make-assembly</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>assembly</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
+
+
+</project>
